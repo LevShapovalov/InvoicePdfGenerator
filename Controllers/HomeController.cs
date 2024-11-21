@@ -125,8 +125,9 @@ public class HomeController : Controller
         ///Applications/Google Chrome.app/Contents/MacOS
         var browser = await Puppeteer.LaunchAsync(new LaunchOptions
         {
+            ExecutablePath = "/usr/bin/chromium-browser",  // для linux
             Headless = true,
-            ExecutablePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" // Укажите путь к своему браузеру
+            //ExecutablePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" // Укажите путь к своему браузеру(для mac os)
         });
         var page = await browser.NewPageAsync();
 
