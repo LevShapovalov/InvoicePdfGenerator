@@ -1,0 +1,19 @@
+<style>
+    .download-button{
+        background-color: aqua;
+        color: rgb(52, 47, 47);
+        border: none;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    .main{
+        margin:50;
+    }
+</style>
+<div class="main">
+    <form asp-controller="Home" asp-action="DownloadFile">
+        <input type="text" name="path" value="@Model" hidden>
+        <button class="download-button" type="submit">Скачать файл</button>
+    </form>
+    <a href="Home/DoPayment">Вернуться на главную</a>
+</div>

@@ -1,0 +1,42 @@
+* {
+    border: 1px solid black;
+}
+.global-div {
+    display: grid;
+}
+.payment {
+    display: flex;
+    margin: 5px;
+}
+.payment input {
+    display: flex;
+    height: 37px;
+    /* margin-top: 10px; */
+    margin: 15px 10px 0px 10px;
+}
+.buyer {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.product {
+    display: flex;
+    flex-direction: column;
+}
+.product-items {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    padding: 0px;
+}
+.product-type {
+    margin-right: 10px;
+    margin-left: 7px;
+}
+.product-type-p {
+    margin-top: 0;
+}
+.product-cost-p {
+    margin-top: 0;
+}

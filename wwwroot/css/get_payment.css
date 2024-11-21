@@ -1,0 +1,103 @@
+.buyer-row {
+  display: flex;
+  margin: 10px;
+  padding: 0px;
+}
+.buyer-row h4 {
+  margin-right: 10px;
+  margin-top: 0px;
+}
+.buyer-row p {
+  margin: 0;
+}
+
+.table-buyer {
+  border-collapse: collapse;
+  margin: 10px;
+  margin-left: 2px;
+}
+.table-buyer td {
+  width: 200px;
+  border: 1px solid black;
+}
+.buyer-or-supplier {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  margin: 0px;
+}
+.buyer-or-supplier h4 {
+  margin: 0px;
+  margin-right: 10px;
+}
+.buyer-or-supplier p {
+  margin: 0;
+}
+.table-supplier td {
+  width: 200px;
+  border: 1px solid black;
+}
+.table-global-supplier {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px;
+  margin-left: 2px;
+}
+.label,
+.num {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: left;
+}
+.name-bank {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+.name-city {
+  border-left: 1px solid black;
+}
+.table-global-supplier th {
+  font-weight: normal;
+}
+.table-global-supplier .header {
+  font-size: 18px;
+  font-weight: normal;
+}
+.table-global-supplier .label {
+  font-weight: normal;
+}
+.bank-beneficiary {
+  border: 1px solid black;
+  border-top: none;
+}
+
+.table-recipient {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.table-name-company {
+  border: 1px solid black;
+  border-bottom: none;
+  padding: 10px;
+  text-align: left;
+}
+
+.table-supplier-mini-text-bank {
+  font-size: 0.8rem;
+  padding: 0;
+  /* margin: 0; */
+  margin-bottom: -20px;
+}
+.table-supplier-mini-text-recipient {
+  font-size: 0.8rem;
+  padding: 0;
+  margin-bottom: 0px;
+}
+.row-text {
+  display: flex;
+  flex-direction: row;
+}
+.more-margin-right {
+  margin-right: 240px;
+}

@@ -1,0 +1,123 @@
+﻿@* <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="do_payment.css">
+</head>
+
+<body>
+    <div class="global-div">
+        <div class="payment">
+            <p>Счет на оплату №</p>
+            <form asp-controller="Home" asp-action="GetPayment">
+                <input type="number" name="numInvoiceForPayment">
+            </form>
+            <p>От</p>
+            <form asp-controller="Home" asp-action="GetPayment">
+                <input type="date" name="paymentDate">
+            </form>
+        </div>
+        <div class="buyer">
+            <h4>Покупатель</h4>
+            <p>Форма регистрации</p>
+            <form asp-controller="Home" asp-action="GetPayment">
+                <select name="buyerTypeBusiness">
+                    <option>ИП</option>
+                    <option>ООО</option>
+                </select>
+            </form>
+            <p>ИНН</p>
+            <form asp-controller="Home" asp-action="GetPayment">
+                <input type="number" name="buyerINN">
+            </form>
+            <p>КПП</p>
+            <form asp-controller="Home" asp-action="GetPayment">
+                <input type="number" name="buyerKPP">
+            </form>
+            <p>Название</p>
+            <form asp-controller="Home" asp-action="GetPayment">
+                <input type="text" name="buyerName">
+            </form>
+            <p>Юр. адрес</p>
+            <form asp-controller="Home" asp-action="GetPayment">
+                <input type="text" name="buyerAddress">
+            </form>
+        </div>
+        <div class="product">
+            <h4>Товары и услуги</h4>
+            <div class="product-items">
+            <div class="product-type">
+                <p class="product-type-p">Название</p>
+                <form asp-controller="Home" asp-action="GetPayment">
+                    <input type="text" name="productName">
+                </form>
+            </div>
+            <div>
+                <p class="product-cost-p">Цена, ₽</p>
+                <form asp-controller="Home" asp-action="GetPayment">
+                    <input type="text" name="productCost">
+                </form>
+            </div>
+        </div>
+        </div>
+            <form asp-controller="Home" asp-action="GetPayment">
+        <input class="btn btn-primary" type="submit" value="Pdf" />
+        </form>
+    </div>
+</body>
+
+</html> *@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="do_payment.css">
+</head>
+
+<body>
+
+    <div class="global-div">
+            <form asp-controller="Home" asp-action="GetPayment">
+        <div class="payment">
+            <p>Счет на оплату №</p>
+                <input type="number" name="numInvoiceForPayment" value="-1">
+            <p>От</p>
+                <input type="date" name="paymentDate">
+        </div>
+        <div class="buyer">
+            <h4>Покупатель</h4>
+            <p>Форма регистрации</p>
+                <select name="buyerTypeBusiness">
+                    <option>ИП</option>
+                    <option>ООО</option>
+                </select>
+            <p>ИНН</p>
+                <input type="number" name="buyerINN">
+            <p>КПП</p>
+                <input type="number" name="buyerKPP">
+            <p>Название</p>
+                <input type="text" name="buyerName">
+            <p>Юр. адрес</p>
+                <input type="text" name="buyerAddress">
+        </div>
+        <div class="product">
+            <h4>Товары и услуги</h4>
+            <div class="product-items">
+            <div class="product-type">
+                <p class="product-type-p">Название</p>
+                    <input type="text" name="productName">
+            </div>
+            <div>
+                <p class="product-cost-p">Цена, ₽</p>
+                    <input type="text" name="productCost">
+            </div>
+        </div>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Pdf" >
+        </form>
+    </div>
+</body>
+
+</html>
