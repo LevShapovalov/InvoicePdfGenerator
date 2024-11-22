@@ -25,8 +25,10 @@ public class HomeController : Controller
     string buyerTypeBusiness, long buyerINN, long buyerKPP, string buyerName,
      string buyerAddress, string productName, string productCost, string lastPath)
     {
-        if(lastPath != null){
-            if (System.IO.File.Exists(lastPath)){
+        if (lastPath != null)
+        {
+            if (System.IO.File.Exists(lastPath))
+            {
                 System.IO.File.Delete(lastPath);
             }
         }
@@ -118,29 +120,43 @@ public class HomeController : Controller
     }
     static async Task CreatePdf(string htmlText, string path)
     {
+        try
+        {
+            /*var browser = await Puppeteer.LaunchAsync(new LaunchOptions
+            {
+                ExecutablePath = "/usr/bin/chromium-browser",  // для linux
+                Headless = true,
+                //ExecutablePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" // Укажите путь к своему браузеру(для mac os)
+            });*/
+            var options = new ConnectOptions
+            {
+                BrowserURL = "ws://localhost:9222"
+            };
+            var browser = await Puppeteer.ConnectAsync(options);
+            
+            var page = await browser.NewPageAsync();
+
+            // Устанавливаем HTML контент в страницу
+            await page.SetContentAsync(htmlText);
+
+            // Генерация PDF
+            await page.PdfAsync(path);
+
+            // Закрытие браузера
+            await browser.CloseAsync();
+
+            Console.WriteLine("PDF успешно создан!");
+        }
+        catch (Exception ex)
+        {
+            System.Console.WriteLine("puppeteerSharp has exception: " + ex.Message);
+        }
         // Загружаем Chromium (если не загружен)
         //await new BrowserFetcher().DownloadAsync();
 
         // Запуск Chromium
         ///Applications/Google Chrome.app/Contents/MacOS
-        var browser = await Puppeteer.LaunchAsync(new LaunchOptions
-        {
-            ExecutablePath = "/usr/bin/chromium-browser",  // для linux
-            Headless = true,
-            //ExecutablePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" // Укажите путь к своему браузеру(для mac os)
-        });
-        var page = await browser.NewPageAsync();
 
-        // Устанавливаем HTML контент в страницу
-        await page.SetContentAsync(htmlText);
-
-        // Генерация PDF
-        await page.PdfAsync(path);
-
-        // Закрытие браузера
-        await browser.CloseAsync();
-
-        Console.WriteLine("PDF успешно создан!");
     }
     public IActionResult DownloadFile(string path)
     {
