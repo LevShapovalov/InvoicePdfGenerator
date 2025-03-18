@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Настройка URL, на котором приложение будет слушать (все интерфейсы, порт 5000)
-builder.WebHost.UseUrls("http://0.0.0.0:5000");// LINUX SERVER FOR!!!
+//builder.WebHost.UseUrls("http://0.0.0.0:5000");// LINUX SERVER FOR!!!
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -25,6 +25,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=GetPayment}/{id?}");
+    pattern: "{controller=Home}/{action=DoPayment}/{id?}");
 
 app.Run();
