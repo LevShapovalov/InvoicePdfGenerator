@@ -80,7 +80,7 @@ public class PdfGenerator
 
                         column.Item()
                             .PaddingBottom(10)
-                            .Text("ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"СОЗДАТЕЛИ МИРОВ\", 121596, г Москва, ул Говорова, дом 15, кв 77");
+                            .Text("ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"<<НАЗВАНИЕ_КОМПАНИИ_ПОСТАВЩИКА>>\", <<ИНДЕКС_ПОСТАВЩИКА>>, <<АДРЕС_ПОСТАВЩИКА>>");
 
                         // Таблица с реквизитами поставщика
                         column.Item()
@@ -102,7 +102,7 @@ public class PdfGenerator
                                 table.Cell().ColumnSpan(1).Container().Border(1)
                                     .Padding(8).PaddingTop(4).PaddingBottom(4).Text("БИК").SemiBold();
                                 table.Cell().ColumnSpan(1).Container().Border(1)
-                                    .AlignMiddle().PaddingLeft(20).Text("044525225");
+                                    .AlignMiddle().PaddingLeft(20).Text("<<БИК_ПОСТАВЩИКА>>");
 
                                 // Вторая строка
                                 table.Cell().ColumnSpan(4).Container()
@@ -111,7 +111,7 @@ public class PdfGenerator
                                 table.Cell().ColumnSpan(1).RowSpan(2).Container().Border(1)
                                     .Padding(10).Text("Сч. №").SemiBold();
                                 table.Cell().ColumnSpan(1).RowSpan(2).Container().Border(1)
-                                    .AlignMiddle().AlignCenter().Text("30101810400000000225");
+                                    .AlignMiddle().AlignCenter().Text("<<НОМЕР_СЧЕТА_ПОСТАВЩИКА>>");
 
                                 // Третья строка
                                 table.Cell().ColumnSpan(4).Container().
@@ -135,7 +135,7 @@ public class PdfGenerator
                                 table.Cell().ColumnSpan(4).Container().BorderTop(1)
                                     .BorderLeft(1).BorderRight(1).PaddingLeft(5).PaddingTop(5)
                                     .PaddingBottom(10)
-                                    .Text("ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"СОЗДАТЕЛИ МИРОВ\"").SemiBold();
+                                    .Text("ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"<<НАЗВАНИЕ_КОМПАНИИ_ПОСТАВЩИКА>>\"").SemiBold();
 
                                 // Шестая строка
                                 table.Cell().ColumnSpan(4).Container().BorderBottom(1)
@@ -207,11 +207,11 @@ public class PdfGenerator
 
                         // Итоговая сумма
                         column.Item()
-                            .PaddingTop(10) // Добавляем отступ сверху
+                            .PaddingTop(10) // отступ сверху
                             .Text($"Всего наименований 1 на сумму {_productCostRub} {_productCostKop}");
 
                         column.Item()
-                            .PaddingBottom(10) // Добавляем отступ снизу
+                            .PaddingBottom(10) // отступ снизу
                             .Text(_productCostInWords);
 
                         // Подписи

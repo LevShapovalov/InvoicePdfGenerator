@@ -1,146 +1,109 @@
 ﻿@using Asp_Payments_Laba.Models.ViewModel
 @model InvoiceViewModel
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="do_payment.css">
-</head>
+@{
+    ViewData["Title"] = "Создание счёта";
+}
 
-<body>
+@section Styles {
+    <link rel="stylesheet" href="~/css/do_payment.css" asp-append-version="true" />
+}
 
-    <div class="global-div">
-            <form asp-controller="Home" asp-action="GetPayment" method="post">
-        <div class="payment">
-            <p>Счет на оплату №</p>
-                <input type="number" asp-for="NumInvoiceForPayment">
-            <p>От</p>
-                <input type="date" asp-for="PaymentDate">
-            <p>Даты поездки:</p>
-            <p>От:</p>
-                <input type="date" asp-for="DateTripFrom">
-            <p>До:</p>
-                <input type="date" asp-for="DateTripTo">
-        </div>
-        <div class="buyer">
-            <h4>Покупатель</h4>
-            <p>Форма регистрации</p>
-                <select asp-for="BuyerTypeBusiness">
-                    <option>ИП</option>
-                    <option>ООО</option>
-                </select>
-            <p>ИНН</p>
-                <input type="number" asp-for="BuyerINN">
-            <p>КПП</p>
-                <input type="number" asp-for="BuyerKPP">
-            <p>Название</p>
-                <input type="text" asp-for="BuyerName">
-            <p>Юр. адрес</p>
-                <input type="text" asp-for="BuyerAddress">
-        </div>
-        <div class="product">
-            <h4>Товары и услуги</h4>
-            <div class="product-items">
-            @* <div class="product-type">
-                <p class="product-type-p">Название</p>
-                    <input type="text" asp-for="ProductName">
-            </div> *@
-            <div>
-                <p class="product-cost-p">Цена, ₽</p>
-                    <input type="text" asp-for="ProductCost">
+<div class="invoice-page">
+    <div class="invoice-card">
+        <form asp-controller="Home" asp-action="GetPayment" method="post" class="invoice-form">
+            <div class="invoice-header">
+                <div class="invoice-title-block">
+                    <p class="invoice-subtitle">Формирование счёта</p>
+                    <h1 class="invoice-title">Счёт на оплату</h1>
+                </div>
+
+                <div class="invoice-meta">
+                    <div class="field-inline">
+                        <label asp-for="NumInvoiceForPayment">№ счёта</label>
+                        <input asp-for="NumInvoiceForPayment" type="number" />
+                    </div>
+                    <div class="field-inline">
+                        <label asp-for="PaymentDate">Дата счёта</label>
+                        <input asp-for="PaymentDate" type="date" />
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
-        <input class="btn btn-primary" type="submit" value="Pdf" >
+
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+            <!-- Даты поездки -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Даты поездки</h2>
+                    <p class="section-description">Укажите период, на который выставляется счёт.</p>
+                </div>
+                <div class="section-body section-grid-2">
+                    <div class="field">
+                        <label asp-for="DateTripFrom">От</label>
+                        <input asp-for="DateTripFrom" type="date" />
+                    </div>
+                    <div class="field">
+                        <label asp-for="DateTripTo">До</label>
+                        <input asp-for="DateTripTo" type="date" />
+                    </div>
+                </div>
+            </section>
+
+            <!-- Покупатель -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Покупатель</h2>
+                    <p class="section-description">Реквизиты организации или индивидуального предпринимателя.</p>
+                </div>
+                <div class="section-body section-grid-2">
+                    <div class="field">
+                        <label asp-for="BuyerTypeBusiness">Форма регистрации</label>
+                        <select asp-for="BuyerTypeBusiness">
+                            <option value="ИП">ИП</option>
+                            <option value="ООО">ООО</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label asp-for="BuyerName">Название компании</label>
+                        <input asp-for="BuyerName" type="text" placeholder="YouTube" />
+                    </div>
+                    <div class="field">
+                        <label asp-for="BuyerINN">ИНН</label>
+                        <input asp-for="BuyerINN" type="number" />
+                    </div>
+                    <div class="field">
+                        <label asp-for="BuyerKPP">КПП</label>
+                        <input asp-for="BuyerKPP" type="number" />
+                    </div>
+                    <div class="field field-full">
+                        <label asp-for="BuyerAddress">Юридический адрес</label>
+                        <input asp-for="BuyerAddress" type="text" placeholder="Город, улица, дом" />
+                    </div>
+                </div>
+            </section>
+
+            <!-- Товары и услуги -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Товары и услуги</h2>
+                    <p class="section-description">Заполните стоимость тура или услуги.</p>
+                </div>
+                <div class="section-body section-grid-2">
+                    @* <div class="field field-full">
+                        <label asp-for="ProductName">Наименование услуги / тура</label>
+                        <input asp-for="ProductName" type="text" placeholder="Тур в Сочи, 7 дней" />
+                    </div> *@
+                    <div class="field field-half">
+                        <label asp-for="ProductCost">Цена, ₽</label>
+                        <input asp-for="ProductCost" type="number" step="0.01" placeholder="0.00" />
+                    </div>
+                </div>
+            </section>
+
+            <div class="form-actions">
+                <input class="primary-button" type="submit" value="Сформировать PDF" />
+            </div>
         </form>
     </div>
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@* <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="do_payment.css">
-</head>
-
-<body>
-    <div class="global-div">
-        <div class="payment">
-            <p>Счет на оплату №</p>
-            <form asp-controller="Home" asp-action="GetPayment">
-                <input type="number" name="numInvoiceForPayment">
-            </form>
-            <p>От</p>
-            <form asp-controller="Home" asp-action="GetPayment">
-                <input type="date" name="paymentDate">
-            </form>
-        </div>
-        <div class="buyer">
-            <h4>Покупатель</h4>
-            <p>Форма регистрации</p>
-            <form asp-controller="Home" asp-action="GetPayment">
-                <select name="buyerTypeBusiness">
-                    <option>ИП</option>
-                    <option>ООО</option>
-                </select>
-            </form>
-            <p>ИНН</p>
-            <form asp-controller="Home" asp-action="GetPayment">
-                <input type="number" name="buyerINN">
-            </form>
-            <p>КПП</p>
-            <form asp-controller="Home" asp-action="GetPayment">
-                <input type="number" name="buyerKPP">
-            </form>
-            <p>Название</p>
-            <form asp-controller="Home" asp-action="GetPayment">
-                <input type="text" name="buyerName">
-            </form>
-            <p>Юр. адрес</p>
-            <form asp-controller="Home" asp-action="GetPayment">
-                <input type="text" name="buyerAddress">
-            </form>
-        </div>
-        <div class="product">
-            <h4>Товары и услуги</h4>
-            <div class="product-items">
-            <div class="product-type">
-                <p class="product-type-p">Название</p>
-                <form asp-controller="Home" asp-action="GetPayment">
-                    <input type="text" name="productName">
-                </form>
-            </div>
-            <div>
-                <p class="product-cost-p">Цена, ₽</p>
-                <form asp-controller="Home" asp-action="GetPayment">
-                    <input type="text" name="productCost">
-                </form>
-            </div>
-        </div>
-        </div>
-            <form asp-controller="Home" asp-action="GetPayment">
-        <input class="btn btn-primary" type="submit" value="Pdf" />
-        </form>
-    </div>
-</body>
-
-</html> *@
+</div>

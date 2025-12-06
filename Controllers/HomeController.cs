@@ -33,6 +33,15 @@ public class HomeController : Controller
     //  string buyerAddress, string productCost, string lastPath)
     public IActionResult GetPayment(InvoiceViewModel model)
     {
+        if (model == null ||
+            string.IsNullOrWhiteSpace(model.PaymentDate) ||
+            string.IsNullOrWhiteSpace(model.DateTripFrom) ||
+            string.IsNullOrWhiteSpace(model.DateTripTo) ||
+            string.IsNullOrWhiteSpace(model.ProductCost))
+        {
+            ModelState.AddModelError(string.Empty, "Заполните обязательные поля для формирования счёта.");
+            return View("DoPayment", model);
+        }
         // if (lastPath != null)
         // {
         //     if (System.IO.File.Exists(lastPath))

@@ -1,42 +1,266 @@
-* {
-    border: 1px solid black;
+/* Страница счёта — центрируем карточку */
+.invoice-page {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 16px;
+    background: radial-gradient(circle at top, #f0f4ff 0, #e5ecff 40%, #f6f8ff 100%);
+    box-sizing: border-box;
 }
-.global-div {
+
+/* Карточка */
+.invoice-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow:
+        0 18px 50px rgba(15, 23, 42, 0.12),
+        0 0 0 1px rgba(148, 163, 184, 0.2);
+    max-width: 960px;
+    width: 100%;
+    padding: 24px 28px 26px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #1f2933;
+    box-sizing: border-box;
+}
+
+/* Верхняя строка: заголовок + №/дата */
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-end;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.invoice-title-block {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+}
+
+.invoice-title {
+    margin-top: 5px;
+    color: #111827;
+}
+
+.invoice-subtitle {
+    margin-bottom: -2px;
+    line-height: 1; 
+    color: #9ca3af;
+}
+
+/* Блок с номером и датой */
+.invoice-meta {
+    display: flex;
+    gap: 16px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+}
+
+.field-inline {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 150px;
+}
+
+.field-inline label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.field-inline input[type="number"],
+.field-inline input[type="date"] {
+    padding: 7px 10px;
+    font-size: 14px;
+    border-radius: 9px;
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+    box-sizing: border-box;
+}
+
+
+.field-inline input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* фокус */
+.field-inline input[type="number"]:focus,
+.field-inline input[type="date"]:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 1px rgba(79, 70, 229, .25);
+    background-color: #fefeff;
+}
+
+/* Основная форма */
+
+.invoice-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 6px;
+}
+
+.section {
+    padding: 12px 0 4px;
+    border-bottom: 1px dashed #e5e7eb;
+}
+
+.section:last-of-type {
+    border-bottom: none;
+}
+
+.section-header {
+    margin-bottom: 8px;
+}
+
+.section-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.section-description {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+.section-body {
     display: grid;
+    gap: 14px 18px;
 }
-.payment {
-    display: flex;
-    margin: 5px;
+
+.section-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.payment input {
-    display: flex;
-    height: 37px;
-    /* margin-top: 10px; */
-    margin: 15px 10px 0px 10px;
-}
-.buyer {
+
+/* Поля */
+
+.field {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
+    gap: 6px;
 }
-.product {
+
+.field-full {
+    grid-column: 1 / -1;
+}
+
+.field-half {
+    max-width: 260px;
+}
+
+.field label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.field input,
+.field select {
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 9px 10px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+    background-color: #f9fafb;
+    box-sizing: border-box;
+}
+
+.field input::placeholder {
+    color: #9ca3af;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.3);
+    background-color: #ffffff;
+}
+
+/* Кнопка */
+
+.form-actions {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 8px;
 }
-.product-items {
-    display: flex;
-    flex-direction: row;
-    margin: 0px;
-    padding: 0px;
+
+.primary-button {
+    border: none;
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: #ffffff;
+    box-shadow: 0 10px 24px rgba(79, 70, 229, 0.35);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
 }
-.product-type {
-    margin-right: 10px;
-    margin-left: 7px;
+
+.primary-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(79, 70, 229, 0.4);
+    filter: brightness(1.03);
 }
-.product-type-p {
-    margin-top: 0;
+
+.primary-button:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.3);
 }
-.product-cost-p {
-    margin-top: 0;
+
+/* Адаптив */
+
+@media (max-width: 768px) {
+    .invoice-page {
+        padding: 20px 10px;
+    }
+
+    .invoice-card {
+        padding: 18px 16px 20px;
+        border-radius: 16px;
+    }
+
+    .invoice-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .invoice-meta {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .section-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .field-inline {
+        flex: 1;
+    }
+
+    .form-actions {
+        justify-content: stretch;
+    }
+
+    .primary-button {
+        width: 100%;
+        text-align: center;
+    }
 }
