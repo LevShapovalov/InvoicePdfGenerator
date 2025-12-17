@@ -1,8 +1,6 @@
-## Build output
 /bin/
 /obj/
 
-## User files
 /.vs/
 /.vscode/
 *.user
@@ -10,29 +8,23 @@
 *.userosscache
 *.sln.docstates
 
-## Packages
 /packages/
 *.nupkg
 *.snupkg
 
-## Logs and diagnostics
 *.log
 /TestResult*/
 /TestResults/
 
-## OS junk
 .DS_Store
 Thumbs.db
 
-## Local artifacts
 *.pdf
 
-## Tooling caches
 /.idea/
 /.ionide/
 /.vsconfig
 /.direnv/
 
-## Publish output
 /publish/
 /artifacts/
