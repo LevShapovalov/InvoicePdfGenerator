@@ -64,10 +64,7 @@ FolderForPdf/
 - **C#**
 - **QuestPDF** — PDF document generation
 - Razor Views
-- Basic HTML / CSS / JavaScript
-
-> 🎨 UI styling was assisted with AI tools.  
-> 🧠 All application logic, architecture, and server-side code were implemented by the author.
+- HTML / CSS / JavaScript
 
 ---
 
