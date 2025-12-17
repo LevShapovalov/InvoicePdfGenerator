@@ -177,6 +177,12 @@ public class HomeController : Controller
     //     string productCostKop, string productCostInWords, string path)
     static void CreatePdf(InvoiceViewModel model, string path)
     {
+        var directory = Path.GetDirectoryName(path);
+        if (!string.IsNullOrEmpty(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
         var generator = new PdfGenerator(
             numInvoiceForPayment: model.NumInvoiceForPayment,
             dateTripFrom: model.DateTripFrom,
