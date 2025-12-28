@@ -29,7 +29,7 @@ The main goal of this project is to practice and demonstrate:
 
 ## 🧠 What This Project Demonstrates
 
-- End-to-end MVC flow: **View → Controller → Service → File → Download**
+- End-to-end MVC flow: **View → Controller → PdfGenerator → File → Download**
 - Server-side document generation (no client-side hacks)
 - Validation of user input before file creation
 - Defensive programming:
