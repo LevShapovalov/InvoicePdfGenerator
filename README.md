@@ -135,7 +135,6 @@ PaymentAdventuresLab/
 - Minimal validation (no localization or currency switching)
 - No authentication or user accounts
 - No email / messaging integrations
-- `PuppeteerSharp` is referenced but not used (left from an experimental approach)
 
 ---
 
